@@ -1,0 +1,19 @@
+services:
+  db:
+    image: mysql:8.0.44-debian
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: app
+      MYSQL_PASSWORD: secret
+    ports:
+      # - "3306:3306"
+      - "3306:3306"
+    command: --default-time-zone=-05:00
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
